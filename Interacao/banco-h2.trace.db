@@ -1,0 +1,6 @@
+2022-11-22 11:29:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CARRO" not found; SQL statement:
+
+            insert into carro (modelo, ano, potencia) values
+            (?)
+         [42102-214]
