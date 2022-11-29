@@ -19,13 +19,13 @@ fun main() {
         showMessageDialog(null, "Obrigado pela confirmacao")
     }
 
-    //val RespostaAtual = Resposta(resposta)
-    //repositorio.inserir(RespostaAtual)
+    val RespostaAtual = Resposta(resposta)
+    repositorio.inserir(RespostaAtual)
 
     println("Gravou amuain")
 
     val teste = repositorio.listar()
     teste.forEach {
-        println(resposta)
+        println(teste)
     }
 }

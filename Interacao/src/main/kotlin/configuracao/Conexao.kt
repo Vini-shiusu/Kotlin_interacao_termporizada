@@ -4,8 +4,8 @@ import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 
 class Conexao {
-    val driverClassName = "turi.database.windows.net"
-    val url = "Turi"
+    val driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    val url = "jdbc:sqlserver://Turi.database.windows.net;databaseName=Turi"
     val username = "adm-turi"
     val password = "Urubu1002"
 
