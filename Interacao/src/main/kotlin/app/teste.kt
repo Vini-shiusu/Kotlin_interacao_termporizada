@@ -19,8 +19,8 @@ fun main() {
         showMessageDialog(null, "Obrigado pela confirmacao")
     }
 
-    val RespostaAtual = Resposta(resposta)
-    repositorio.inserir(RespostaAtual)
+    //val RespostaAtual = Resposta(resposta)
+    //repositorio.inserir(RespostaAtual)
 
     println("Gravou amuain")
 

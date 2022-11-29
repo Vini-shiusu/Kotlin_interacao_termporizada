@@ -4,10 +4,10 @@ import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 
 class Conexao {
-    val driverClassName = "org.h2.Driver"
-    val url = "jdbc:h2:./banco-h2"
-    val username = "teste"
-    val password = "123"
+    val driverClassName = "turi.database.windows.net"
+    val url = "Turi"
+    val username = "adm-turi"
+    val password = "Urubu1002"
 
     fun getJdbcTemplate(): JdbcTemplate {
         val dataSource = BasicDataSource()
