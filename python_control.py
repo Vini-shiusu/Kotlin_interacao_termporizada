@@ -2,7 +2,6 @@ import os
 import psutil
 import time
 import pyodbc
-import mysql.connector
 
 memoriaTotal = round(psutil.virtual_memory().total*(2**-30),2)
 
@@ -11,7 +10,7 @@ while True:
     database = 'Turi'
     username = 'adm-turi'
     password = 'Urubu1002'
-    cnxn = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};SERVER='+server +
+    cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server +
                         ';DATABASE='+database+';ENCRYPT=yes;UID='+username+';PWD=' + password)
     cursor = cnxn.cursor()
 
@@ -29,7 +28,8 @@ while True:
     #cursorLocal = con.cursor()
         
     # comando para select dos dados das variaveis no banco NUVEM
-    res = cursor.execute("select resposta from respostaOcio order by id desc;")
+    sqlNuvem001 = "select resposta from respostaOcio order by id desc;"
+    cursor.execute(sqlNuvem001)
     row = cursor.fetchone() 
     print(row[0])
     print("memoria atual:", memoriaTotal)
@@ -38,8 +38,16 @@ while True:
     time.sleep(5.0)
     if(memoriaTotal < 8.80):
         os.system("start comando1.bat")
+        print("iniciou")
+        time.sleep(30.0)
 
-    if(row[0] == 0):
+        sqlNuvem001 = "select resposta from respostaOcio order by id desc;"
+        cursor.execute(sqlNuvem001)
+        row = cursor.fetchone()
+
+    if(row[-1] == 0):
         print("oi")
         #os.system("shutdown -h")
+    else:
+        print("retornar")
 
