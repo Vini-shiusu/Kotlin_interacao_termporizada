@@ -3,7 +3,8 @@ import psutil
 import time
 import pyodbc
 
-memoriaTotal = round(psutil.virtual_memory().total*(2**-30),2)
+#memoriaTotal = round(psutil.virtual_memory().total*(2**-30),2)
+
 
 while True:
     server = 'turi.database.windows.net'
@@ -28,26 +29,32 @@ while True:
     #cursorLocal = con.cursor()
         
     # comando para select dos dados das variaveis no banco NUVEM
+
     sqlNuvem001 = "select resposta from respostaOcio order by id desc;"
     cursor.execute(sqlNuvem001)
-    row = cursor.fetchone() 
-    print(row[0])
-    print("memoria atual:", memoriaTotal)
+    row = cursor.fetchone()
+
+    print("Capturando a memoria do seu caixa")
+    print("aguarde")
+    memoriaTotal = round(psutil.virtual_memory()[2], 2)
+    time.sleep(3.0)
+    print("memoria RAM ultilizada no momento:", memoriaTotal)
     print("=======================")
+
+    row[-1] = 0
  # discretização - reduzir tamanho do dado coletado 
     time.sleep(5.0)
-    if(memoriaTotal < 8.80):
-        os.system("start comando1.bat")
-        print("iniciou")
+    if(memoriaTotal < 65.0):
+        print("Ociosidade ")
         time.sleep(30.0)
-
-        sqlNuvem001 = "select resposta from respostaOcio order by id desc;"
+        os.system("start comando1.bat")
         cursor.execute(sqlNuvem001)
         row = cursor.fetchone()
+        
 
-    if(row[-1] == 0):
-        print("oi")
-        #os.system("shutdown -h")
-    else:
-        print("retornar")
+        if(row[-1] != 1):
+           print("Colocando o caixa em modo de hibernação")
+           #os.system("shutdown -h")
+        else:
+         print("retornar")
 
